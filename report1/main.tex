@@ -1,0 +1,717 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Programming/Coding Assignment
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original author:
+% Ted Pavlic (http://www.tedpavlic.com)
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing assignment content.
+%
+% This template uses a Perl script as an example snippet of code, most other
+% languages are also usable. Configure them in the "CODE INCLUSION 
+% CONFIGURATION" section.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage[usenames,dvipsnames]{color} % Required for custom colors
+\usepackage{graphicx} % Required to insert images
+\usepackage{listings} % Required for insertion of code
+\usepackage{courier} % Required for the courier font
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{titlesec}
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+\rhead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle} % Top center head
+%\rhead{\firstxmark} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \protect\pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+%----------------------------------------------------------------------------------------
+%	CODE INCLUSION CONFIGURATION
+%----------------------------------------------------------------------------------------
+
+\definecolor{pblue}{rgb}{0.13,0.13,1}
+\definecolor{pgreen}{rgb}{0,0.5,0}
+\definecolor{pred}{rgb}{0.9,0,0}
+\definecolor{pgrey}{rgb}{0.46,0.45,0.48}
+
+\lstset{language=Java,
+  showspaces=false,
+  showtabs=false,
+  breaklines=true,
+  showstringspaces=false,
+  breakatwhitespace=true,
+  commentstyle=\color{pgreen},
+  keywordstyle=\color{pblue},
+  stringstyle=\color{pred},
+  basicstyle=\ttfamily,
+  moredelim=[il][\textcolor{pgrey}]{$$},
+  moredelim=[is][\textcolor{pgrey}]{\%\%}{\%\%}
+}
+% Creates a new command to include a perl script, the first parameter is the filename of the script (without .pl), the second parameter is the caption
+\newcommand{\cfile}[2]{
+\begin{itemize}
+\item[]\lstinputlisting[caption=#2,label=#1]{#1.c}
+\end{itemize}
+}
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT STRUCTURE COMMANDS
+%	Skip this unless you know what you're doing
+%----------------------------------------------------------------------------------------
+
+% Header and footer for when a page split occurs within a problem environment
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+}
+
+% Header and footer for when a page split occurs between problem environments
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1}{}\nobreak
+}
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+\newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
+
+\newcommand{\homeworkProblemName}{}
+\newenvironment{homeworkProblem}[1][Exercício \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
+\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
+\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
+\section{\homeworkProblemName} % Make a section in the document with the custom problem count
+\enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
+}{
+\exitProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+\newcommand{\problemAnswer}[1]{ % Defines the problem answer command with the content as the only argument
+\noindent\framebox[\columnwidth][c]{\begin{minipage}{0.98\columnwidth}#1\end{minipage}} % Makes the box around the problem answer and puts the content inside
+}
+
+\newcommand{\homeworkSectionName}{}
+\newenvironment{homeworkSection}[1]{ % New environment for sections within homework problems, takes 1 argument - the name of the section
+\renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argument
+\subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
+\enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]} % Header and footer within the environment
+}{
+\enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Práticas 1 e 2} % Assignment title
+\newcommand{\hmwkDueDate}{Quarta-feira,\ 12 de\ Abril de\ 2017} % Due date
+\newcommand{\hmwkClass}{BC1513} % Course/class
+\newcommand{\hmwkClassTime}{} % Class/lecture time
+\newcommand{\hmwkClassInstructor}{João H. Kleinschmidt} % Teacher/lecturer
+\newcommand{\hmwkAuthorName}{Rodrigo Martins de Oliveira} % Your name
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{
+\vspace{2in}
+\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+\normalsize\vspace{0.1in}\small{Para\ \hmwkDueDate}\\
+\vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
+\vspace{3in}
+}
+
+\author{\textbf{\hmwkAuthorName}}
+\date{} % Insert date here if you want it to appear below your name
+
+%----------------------------------------------------------------------------------------
+
+\titleformat{\chapter}[display]
+  {\bfseries\huge}
+  {}
+  {-10ex}
+  {\titlerule\vspace{1.5ex}\filright}
+  [\vspace{1ex}\titlerule]
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+%\setcounter{tocdepth}{1} % Uncomment this line if you don't want subsections listed in the ToC
+
+%\newpage
+%\tableofcontents
+\newpage
+
+\chapter*{Introdução}
+
+Nestas práticas de laboratório de redes de computadores são exercitados os conceitos de comunicação entre aplicações através do protocolo de transporte não-orientado à conexão, UDP, e do protocolo de transporte orientado à conexão, TCP. Os conceitos de endereço IP, porta e socket são cobertos.
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+\chapter{Prática 1}
+
+% To have just one problem per page, simply put a \clearpage after each problem
+\begin{homeworkProblem}
+%Listing \ref{11009713_desafio2} shows a the radixSort\_base() function and auxiliary functions and macros used.
+%
+%\cfile{11009713_desafio2}{Threading a Binary Tree in ERD order}
+
+\section{a)}
+O servidor UDP abre um socket UDP em uma porta específica e ``escuta'' pacotes que chegam por esta porta, capturando-os e lendo informações nele contidas. Após receber um pacote o servidor capitaliza o conteúdo deste e o envia de volta para o endereço e porta de origem informados pelo pacote.
+
+O cliente UDP abre um socket UDP em uma porta qualquer e envia um pacote para o endereço e porta esperados do servidor e espera pela resposta na mesma porta.
+
+\section{b)}
+Como não há quaisquer mecanismos mais complexos de verificação do status de rede do servidor e de confirmações de envio e recebimento de pacotes, o pacote enviado pelo cliente é perdido já que o servidor ainda não está online e escutando a porta designada, então o cliente fica ``eternamente'' aguardando a resposta do servidor. Mesmo que o servidor venha a ficar online posteriormente, o pacote enviado anteriormente pelo cliente já foi perdido e o servidor não saberá disso, portanto, continuará aguardando a chegada de um novo pacote.
+
+\section{c)}
+Se a porta para a qual o cliente envia os pacotes não for a mesma porta a qual o servidor está conectado qualquer pacote enviado pelo cliente será perdido (ou capturado por outra aplicação que detém controle sobre a porta) e o servidor nunca receberá os pacotes. O resultado é semelhante ao que foi visto no exercício 1.b)
+
+\end{homeworkProblem}
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 2
+%----------------------------------------------------------------------------------------
+
+% To have just one problem per page, simply put a \clearpage after each problem
+\begin{homeworkProblem}
+%Listing \ref{11009713_desafio2} shows a the radixSort\_base() function and auxiliary functions and macros used.
+%
+%\cfile{11009713_desafio2}{Threading a Binary Tree in ERD order}
+
+Desde que o endereço de IP e porta do servidor estejam corretamente configurados no cliente, a comunicação entre os dois processos acontece normalmente.
+
+\end{homeworkProblem}
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 3
+%----------------------------------------------------------------------------------------
+
+% To have just one problem per page, simply put a \clearpage after each problem
+\begin{homeworkProblem}
+%Listing \ref{11009713_desafio2} shows a the radixSort\_base() function and auxiliary functions and macros used.
+%
+%\cfile{11009713_desafio2}{Threading a Binary Tree in ERD order}
+
+Sim, o servidor receberá todas as mensagens. Pelo fato de ser uma comunicação não-orientada à conexão, todos os pacotes, de diferentes origens, são enfileirados pela camada de transporte e enviados sequencialmente para o servidor lê-los, portanto a concorrência de recebimento de múltiplos pacotes de diferentes endereços de origem é abstraída da aplicação.
+
+\end{homeworkProblem}
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 4
+%----------------------------------------------------------------------------------------
+
+% To have just one problem per page, simply put a \clearpage after each problem
+\begin{homeworkProblem}
+%Listing \ref{11009713_desafio2} shows a the radixSort\_base() function and auxiliary functions and macros used.
+%
+%\cfile{11009713_desafio2}{Threading a Binary Tree in ERD order}
+
+O servidor não precisa sofrer quaisquer alterações dada sua abstração sobre a origem dos pacotes, para o servidor, o endereço e porta de origem do pacote apenas são um parâmetro e não definem qualquer tratamento de sessão especial (como seria no caso de uma conexão TCP, em que uma conexão é estabelecida).
+
+\begin{lstlisting}
+public class UDPClient {
+    public static void main(String[] args) throws SocketException,
+            UnknownHostException, IOException
+    {
+        BufferedReader inFromUser =
+                new BufferedReader(new InputStreamReader(System.in));
+        DatagramSocket clientSocket = new DatagramSocket();
+        InetAddress IPAddress = InetAddress.getByName("127.0.0.1");
+        byte[] sendData = new byte[1024];
+        byte[] receiveData = new byte[1024];
+        String sentence;
+        while (true) {
+            sentence = inFromUser.readLine();
+            if ("sair".equals(sentence)) {
+                break;
+            }
+            sendData = sentence.getBytes();
+            DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 9876);
+            clientSocket.send(sendPacket);
+            DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+            clientSocket.receive(receivePacket);
+            String modifiedSentence = new String(receivePacket.getData());
+            System.out.println("Do servidor:" + modifiedSentence);
+        }
+        clientSocket.close();
+    }
+}
+\end{lstlisting}
+
+\end{homeworkProblem}
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 5
+%----------------------------------------------------------------------------------------
+
+% To have just one problem per page, simply put a \clearpage after each problem
+\begin{homeworkProblem}
+%Listing \ref{11009713_desafio2} shows a the radixSort\_base() function and auxiliary functions and macros used.
+%
+%\cfile{11009713_desafio2}{Threading a Binary Tree in ERD order}
+
+\begin{lstlisting}
+public class UDPServer {
+    public static void main(String[] args) throws SocketException, IOException {
+        DatagramSocket serverSocket = new DatagramSocket(9876);
+        byte[] receiveData = new byte[1024];
+        byte[] sendData = new byte[1024];
+        List<String> blacklist = Arrays.asList("172.31.33.27", "172.31.33.29");
+        while(true)
+        {
+            DatagramPacket receivePacket
+                    = new DatagramPacket(receiveData, receiveData.length);
+            System.out.println("Servidor aguardando..." );
+            serverSocket.receive(receivePacket);
+            InetAddress IPAddress = receivePacket.getAddress();
+            
+            if (blacklist.contains(IPAddress.toString())) {
+                continue;
+            }
+                    
+            String sentence = new String( receivePacket.getData());
+            System.out.println("Mensagem recebida: " + sentence);
+            int port = receivePacket.getPort();
+            String capitalizedSentence = sentence.toUpperCase();
+            sendData = capitalizedSentence.getBytes();
+            DatagramPacket sendPacket
+                    = new DatagramPacket(sendData, sendData.length, IPAddress, port);
+            serverSocket.send(sendPacket);
+        }
+    }
+}
+\end{lstlisting}
+
+\end{homeworkProblem}
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 5
+%----------------------------------------------------------------------------------------
+
+% To have just one problem per page, simply put a \clearpage after each problem
+\begin{homeworkProblem}
+%Listing \ref{11009713_desafio2} shows a the radixSort\_base() function and auxiliary functions and macros used.
+%
+%\cfile{11009713_desafio2}{Threading a Binary Tree in ERD order}
+
+patients.xds
+
+\end{homeworkProblem}
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 7
+%----------------------------------------------------------------------------------------
+
+% To have just one problem per page, simply put a \clearpage after each problem
+\begin{homeworkProblem}
+%Listing \ref{11009713_desafio2} shows a the radixSort\_base() function and auxiliary functions and macros used.
+%
+%\cfile{11009713_desafio2}{Threading a Binary Tree in ERD order}
+
+A aplicação do Whatsapp foi criada contendo: (i) um servidor principal que é responsável por receber as mensagens de clientes e garantir que sejam recebidas aos respectivos clientes de destino; e (ii) aplicações cliente que enviam mensagens endereçadas a outros clientes para o servidor e recebem mensagens do servidor remetidas por outros clientes.
+
+Cada aplicação cliente possui um identificador único obtido informado pelo servidor e pode enviar mensagens endereçando-as a outros clientes através de seus respectivos identificadores. O cliente espera receber informações sobre o recebimento da mensagem pelo destinatário e também sobre mensagens recebidas.
+
+O servidor espera que cada cliente envie mensagens formatadas segundo um determinado padrão e envia respostas de confirmação de recebimento para os clientes e espera que eles também enviem respostas de confirmação de recebimento de mensagens para poder informar os remetentes das mensagens sobre sua entrega.
+
+Cada cliente possui um mecanismo de \emph{retry} para o envio de mensagens para garantir que elas sejam entregues ao servidor.
+
+O servidor guarda representações de conversas entre clientes, nas quais enfileira mensagens a serem entregues. Quando as mensagens são entregues aos destinatários o servidor apaga suas cópias locais.
+
+\end{homeworkProblem}
+
+%----------------------------------------------------------------------------------------
+
+\chapter{Prática 2}
+\setcounter{homeworkProblemCounter}{0}
+
+\begin{homeworkProblem}
+
+\section{a)}
+O servidor TCP abre um socket TCP em uma porta específica para aceitar conexões externas e espera uma conexão ser estabelecida nesta porta. Após estabelecer a conexão com um cliente, o servidor lê o fluxo de dados escrito na porta da conexão como uma String, capitaliza o conteúdo dessa String e a escreve no buffer de saída da porta da conexão.
+
+O cliente TCP tenta conectar-se, através de um socket TCP qualquer, ao endereço e porta esperados do servidor e, obtendo sucesso na conexão, escreve no buffer de saída uma String para ser lida pelo servidor e espera ler do buffer de entrada a resposta do servidor.
+
+Diferente do servidor UDP, este servidor espera por uma \emph{conexão} e não lê um pacote, mas sim um buffer de entrada. Já o cliente TCP, diferentemente do UDP, tenta estabelecer uma conexão com o servidor, para então escrever em um buffer de saída dentro desta conexão e não enviar um pacote para o endereço e porta do servidor.
+
+\section{b)}
+Como não há quaisquer mecanismos mais complexos de verificação do status de rede do servidor o cliente tenta estabelecer conexão no endereço e porta esperados do servidor, mas tem sua conexão recusada, pois, como o servidor não está executando, a porta especificada no endereço requerido pelo cliente não estará aberta e irá rejeitar quaisquer conexões. O cliente falhará sua execução pela falta de mecanismos para lidar com a exceção lançada ao ter a conexão recusada.
+
+\section{c)}
+Se a porta para a qual o cliente envia os pacotes não for a mesma porta a qual o servidor está conectado a conexão do cliente será recusada (ou estabelecida por outra aplicação que detém controle sobre a porta) e o servidor nunca estabelecerá conexão com o cliente. O resultado é semelhante ao que foi visto no exercício 1.b)
+
+\end{homeworkProblem}
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 2
+%----------------------------------------------------------------------------------------
+
+% To have just one problem per page, simply put a \clearpage after each problem
+\begin{homeworkProblem}
+%Listing \ref{11009713_desafio2} shows a the radixSort\_base() function and auxiliary functions and macros used.
+%
+%\cfile{11009713_desafio2}{Threading a Binary Tree in ERD order}
+
+Desde que o endereço de IP e porta do servidor estejam corretamente configurados no cliente, a comunicação entre os dois processos acontece normalmente.
+
+\end{homeworkProblem}
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 3
+%----------------------------------------------------------------------------------------
+
+% To have just one problem per page, simply put a \clearpage after each problem
+\begin{homeworkProblem}
+%Listing \ref{11009713_desafio2} shows a the radixSort\_base() function and auxiliary functions and macros used.
+%
+%\cfile{11009713_desafio2}{Threading a Binary Tree in ERD order}
+
+Sim, o servidor receberá todas as mensagens. Pelo fato de haver um controle de acesso concorrente à porta aberta pelo servidor por parte do Java ServerSocket, cada requisição de conexão é enfileirada e espera a porta estar livre para um nova conexão para estabelecer a conexão. Como cada cliente espera o retorno de sua requisição de conexão para escrever sua mensagem, todos clientes entregarão suas mensagens quando estabelecerem sua conexão com o servidor.
+
+\end{homeworkProblem}
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 4
+%----------------------------------------------------------------------------------------
+
+% To have just one problem per page, simply put a \clearpage after each problem
+\begin{homeworkProblem}
+%Listing \ref{11009713_desafio2} shows a the radixSort\_base() function and auxiliary functions and macros used.
+%
+%\cfile{11009713_desafio2}{Threading a Binary Tree in ERD order}
+
+Servidor TCP:
+
+\begin{lstlisting}
+class TCPServer {
+
+    public static void main (String args[]) throws Exception {
+
+        ServerSocket serverSocket = new ServerSocket(9000);
+        // waits for a new connection. Accepts connetion from multiple clients
+        while (true)
+        {
+            System.out.println("Esperando conexao na porta 9000");
+            Socket s = serverSocket.accept();
+            System.out.println("Conexao estabelecida de " + s.getInetAddress());
+
+            // create a BufferedReader object to read strings from
+            // the socket. (read strings FROM CLIENT)
+            BufferedReader br = new BufferedReader(new InputStreamReader(s.getInputStream()));
+            String input;
+
+            double weight, height, imc;
+
+            input = br.readLine();
+            weight = Double.parseDouble(input);
+
+            input = br.readLine();
+            height = Double.parseDouble(input);
+
+            imc = weight/(height*height);
+
+            //create output stream to write to/send TO CLINET
+            DataOutputStream output = new DataOutputStream(s.getOutputStream());
+
+            output.writeBytes(String.valueOf(imc) + "\n");
+            // close current connection
+            s.close();
+        }
+    }
+}
+\end{lstlisting}
+
+Cliente TCP:
+
+\begin{lstlisting}
+public class TCPClient {
+
+    public static void main (String args[]) throws Exception {
+
+        // Connect to the server process running at host
+        Socket s = new Socket("127.0.0.1", 9000);
+
+        // The next 2 lines create a output stream we can
+        // write to.  (To write TO SERVER)
+        OutputStream os= s.getOutputStream();
+        DataOutputStream serverWriter = new DataOutputStream(os);
+
+        // The next 2 lines create a buffer reader that
+        // reads from the standard input. (to read stream FROM SERVER)
+        InputStreamReader isrServer = new InputStreamReader(s.getInputStream());
+        BufferedReader serverReader = new BufferedReader(isrServer);
+
+
+        //create buffer reader to read input from user. Read the user input to string 'sentence'
+        BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
+        String input;
+
+        input = inFromUser.readLine();
+
+        // Send a user input to server
+        serverWriter.writeBytes(input +"\n");
+
+        input = inFromUser.readLine();
+
+        // Send a user input to server
+        serverWriter.writeBytes(input +"\n");
+
+        // Server should convert to upper case and reply.
+        // Read server's reply below and output to screen.
+        String response = serverReader.readLine();
+        System.out.println(response);
+        s.close();
+    }
+}
+\end{lstlisting}
+
+\end{homeworkProblem}
+
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 5
+%----------------------------------------------------------------------------------------
+
+% To have just one problem per page, simply put a \clearpage after each problem
+\begin{homeworkProblem}
+%Listing \ref{11009713_desafio2} shows a the radixSort\_base() function and auxiliary functions and macros used.
+%
+%\cfile{11009713_desafio2}{Threading a Binary Tree in ERD order}
+
+Servidor TCP:
+
+\begin{lstlisting}
+class TCPServer {
+
+    public static void main (String args[]) throws Exception {
+
+        ServerSocket serverSocket = new ServerSocket(9000);
+        // waits for a new connection. Accepts connetion from multiple clients
+        while (true)
+        {
+            System.out.println("Esperando conexao na porta 9000");
+            Socket s = serverSocket.accept();
+            System.out.println("Conexao estabelecida de " + s.getInetAddress());
+
+            // create a BufferedReader object to read strings from
+            // the socket. (read strings FROM CLIENT)
+            BufferedReader br = new BufferedReader(new InputStreamReader(s.getInputStream()));
+            String input;
+
+            double weight, height, imc;
+
+            while (true) {
+                input = br.readLine();
+
+                if ("tchau".equals(input)) {
+                    break;
+                }
+
+                weight = Double.parseDouble(input);
+
+                input = br.readLine();
+                height = Double.parseDouble(input);
+
+                imc = weight / (height * height);
+
+                //create output stream to write to/send TO CLINET
+                DataOutputStream output = new DataOutputStream(s.getOutputStream());
+
+                output.writeBytes(String.valueOf(imc) + "\n");
+            }
+            // close current connection
+            s.close();
+        }
+    }
+}
+\end{lstlisting}
+
+Cliente TCP:
+
+\begin{lstlisting}
+public class TCPClient {
+
+    public static void main (String args[]) throws Exception {
+
+        // Connect to the server process running at host
+        Socket s = new Socket("127.0.0.1", 9000);
+
+        // The next 2 lines create a output stream we can
+        // write to.  (To write TO SERVER)
+        OutputStream os= s.getOutputStream();
+        DataOutputStream serverWriter = new DataOutputStream(os);
+
+        // The next 2 lines create a buffer reader that
+        // reads from the standard input. (to read stream FROM SERVER)
+        InputStreamReader isrServer = new InputStreamReader(s.getInputStream());
+        BufferedReader serverReader = new BufferedReader(isrServer);
+
+
+        //create buffer reader to read input from user. Read the user input to string 'sentence'
+        BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
+        String input;
+
+        while (true) {
+            input = inFromUser.readLine();
+
+            // Send a user input to server
+            serverWriter.writeBytes(input + "\n");
+
+            if ("tchau".equals(input)) {
+                break;
+            }
+
+            input = inFromUser.readLine();
+
+            // Send a user input to server
+            serverWriter.writeBytes(input + "\n");
+
+            // Server should convert to upper case and reply.
+            // Read server's reply below and output to screen.
+            String response = serverReader.readLine();
+            System.out.println(response);
+        }
+        s.close();
+    }
+}
+\end{lstlisting}
+
+\end{homeworkProblem}
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 6
+%----------------------------------------------------------------------------------------
+
+% To have just one problem per page, simply put a \clearpage after each problem
+\begin{homeworkProblem}
+%Listing \ref{11009713_desafio2} shows a the radixSort\_base() function and auxiliary functions and macros used.
+%
+%\cfile{11009713_desafio2}{Threading a Binary Tree in ERD order}
+
+O cliente não sofre alterações. O servidor deve criar threads para aceitar múltiplas conexões:
+
+\begin{lstlisting}
+public class TCPServer {
+    public static void main (String[] args) {
+        try {
+            ServerSocket server = new ServerSocket(9000);
+            while (true) {
+                Socket client = server.accept();
+                ServerThread handler = new ServerThread(client);
+                handler.start();
+            }
+        }
+        catch (Exception e) {
+            System.err.println("Exception caught:" + e);
+        }
+    }
+}
+
+class ServerThread extends Thread {
+
+    Socket client;
+    ServerThread (Socket client) {
+        this.client = client;
+    }
+
+    public void run () {
+        try {
+            // waits for a new connection. Accepts connetion from multiple clients
+            while (true) {
+                System.out.println("Esperando conexao na porta 9000");
+                System.out.println("Conexao estabelecida de " + client.getInetAddress());
+
+                // create a BufferedReader object to read strings from
+                // the socket. (read strings FROM CLIENT)
+                BufferedReader br = new BufferedReader(new InputStreamReader(client.getInputStream()));
+                String input;
+
+                double weight, height, imc;
+
+                while (true) {
+                    input = br.readLine();
+
+                    if ("tchau".equals(input)) {
+                        break;
+                    }
+
+                    weight = Double.parseDouble(input);
+
+                    input = br.readLine();
+                    height = Double.parseDouble(input);
+
+                    imc = weight / (height * height);
+
+                    //create output stream to write to/send TO CLIENT
+                    DataOutputStream output = new DataOutputStream(client.getOutputStream());
+
+                    output.writeBytes(String.valueOf(imc) + "\n");
+                }
+                // close current connection
+                client.close();
+            }
+        } catch (Exception e) {
+            System.err.println("Exception caught: client disconnected.");
+        } finally {
+            try { client.close(); }
+            catch (Exception e ){
+
+            }
+        }
+    }
+}
+\end{lstlisting}
+
+\end{homeworkProblem}
+
+\chapter*{Conclusão}
+
+Nesta prática observamos que o protocolo UDP permite abstrair a origem dos pacotes de dados, já que não requer conexão, permitindo ao servidor lidar fácilmente com múltiplos clientes quando o tratamento \emph{per} pacote é isolado e independente.
+
+Também é notável que o protoloco UDP requer cuidados especiais para garantir o recebimento de pacotes.
+
+\end{document}

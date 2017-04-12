@@ -1,0 +1,4 @@
+rootProject.name = 'tcpapplication'
+include 'client'
+include 'server'
+
